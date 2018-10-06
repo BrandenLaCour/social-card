@@ -27,17 +27,17 @@ const SocialCard = ({ name, backG, instagram, job, bio, prof, onclick }) => {
 
   return (
     <div className="card mx-auto" style={divStyle} onClick={onclick}>
-      <img className="card-img-top" src={backG} alt="Card image cap" />
+      <img className="card-img-top" src={backG} alt="" />
 
       <div className="card-body">
         <h4 className="card-title">{name} </h4>
 
         <div className="marg">
-          <img src="https://bit.ly/2pCVwCP" style={insta} />
+          <img src="https://bit.ly/2pCVwCP" style={insta} alt="" />
           <p className="card-text">{job}</p>
           <p id="bio">{bio}</p>
         </div>
-        <img src={prof} className="rounded-circle" style={profile} />
+        <img src={prof} className="rounded-circle" style={profile} alt="" />
       </div>
     </div>
   );
