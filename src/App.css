@@ -1,32 +1,22 @@
-.App {
-  text-align: center;
+.card-body {
+  background-color: lightgray;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+.marg {
+  margin-right: 150px;
+  margin-bottom: 20px;
+  margin-left: 2px;
+  font-family: Impact, "Arial Narrow Bold", sans-serif;
+  min-height: 50px;
+  max-height: 70px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#bio {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.8em;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card-img-top {
+  min-height: 230px;
+  max-height: 285px;
 }

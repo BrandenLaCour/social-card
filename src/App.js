@@ -1,26 +1,42 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { users } from "./components/users";
+import "./App.css";
+import SocialCard from "./components/socialCard";
 
 class App extends Component {
+  state = {
+    user: { name: "", job: "", bio: "", pic: "", backG: "", insta: "" }
+  };
+
+  init = () => {
+    let user = { ...this.state.user };
+    const pick = Math.floor(Math.random() * 3);
+    user = users[pick];
+    this.setState({ user });
+  };
+
+  handleClick = () => {
+    this.init();
+  };
+
+  componentWillMount() {
+    this.init();
+  }
+
   render() {
+    const { name, job, bio, pic, backG, insta } = this.state.user;
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <SocialCard
+        onclick={this.handleClick}
+        name={name}
+        job={job}
+        bio={bio}
+        instagram={insta}
+        // instagram={insta} change to a button
+        prof={pic}
+        backG={backG}
+      />
     );
   }
 }
