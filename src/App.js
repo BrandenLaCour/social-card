@@ -1,42 +1,75 @@
 import React, { Component } from "react";
-import { users } from "./components/users";
-import "./App.css";
 import SocialCard from "./components/socialCard";
+import NewCard from "./components/newCard";
+import "./App.css";
 
 class App extends Component {
   state = {
-    user: { name: "", job: "", bio: "", pic: "", backG: "", insta: "" }
+    user: {
+      name: "",
+      job: "",
+      bio: "",
+      pic: "",
+      backG: "",
+      insta: "",
+      display: false
+    },
+    errors: {}
   };
 
-  init = () => {
-    let user = { ...this.state.user };
-    const pick = Math.floor(Math.random() * 3);
-    user = users[pick];
+  handleChange = e => {
+    const user = { ...this.state.user };
+    const index = e.target.id;
+    user[index] = e.target.value;
     this.setState({ user });
   };
 
-  handleClick = () => {
-    this.init();
+  handleSubmit = () => {
+    let newUser = { ...this.state.user };
+    newUser.display = true;
+    this.setState({ user: newUser });
   };
 
-  componentWillMount() {
-    this.init();
-  }
+  handleInsta = () => {
+    const insta = this.state.user.insta;
+    window.location.assign(insta.trim());
+  };
 
+  validate = () => {
+    const { bio, name, job, pic, backG, insta } = this.state.user;
+    if (!name || !bio || !job || !pic || !backG || !insta) return true;
+    else return false;
+  };
+
+  // Add Joi Here!!
+  // grey out fields that are not filled out
+  // grey out submit until all fields are filled
   render() {
-    const { name, job, bio, pic, backG, insta } = this.state.user;
+    const { name, job, bio, pic, backG } = this.state.user;
 
     return (
-      <SocialCard
-        onclick={this.handleClick}
-        name={name}
-        job={job}
-        bio={bio}
-        instagram={insta}
-        // instagram={insta} change to a button
-        prof={pic}
-        backG={backG}
-      />
+      <React.Fragment>
+        {!this.state.user.display && (
+          <NewCard
+            change={this.handleChange}
+            submit={this.handleSubmit}
+            errors={this.validate()}
+          />
+        )}
+
+        {this.state.user.display && (
+          <SocialCard
+            name={name}
+            onclick={""}
+            job={job}
+            bio={bio}
+            instaG={this.handleInsta}
+            // instagram={insta} change to a button
+            prof={pic}
+            backG={backG}
+          />
+        )}
+      </React.Fragment>
     );
   }
 }

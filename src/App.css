@@ -20,3 +20,15 @@
   min-height: 230px;
   max-height: 285px;
 }
+#home {
+  margin-top: 35px;
+  width: 50%;
+  height: 50%;
+  float: left;
+  margin-left: 100px;
+}
+#form {
+  float: right;
+  margin-right: 300px;
+  margin-top: 25px;
+}

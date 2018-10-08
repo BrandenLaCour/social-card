@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css";
 
-const SocialCard = ({ name, backG, instagram, job, bio, prof, onclick }) => {
+const SocialCard = ({ name, backG, instaG, job, bio, prof }) => {
   const divStyle = {
     width: "30rem",
     display: "block",
@@ -26,14 +26,19 @@ const SocialCard = ({ name, backG, instagram, job, bio, prof, onclick }) => {
   };
 
   return (
-    <div className="card mx-auto" style={divStyle} onClick={onclick}>
+    <div className="card mx-auto" style={divStyle}>
       <img className="card-img-top" src={backG} alt="" />
 
       <div className="card-body">
         <h4 className="card-title">{name} </h4>
 
         <div className="marg">
-          <img src="https://bit.ly/2pCVwCP" style={insta} alt="" />
+          <img
+            src="https://bit.ly/2pCVwCP"
+            style={insta}
+            alt=""
+            onClick={instaG}
+          />
           <p className="card-text">{job}</p>
           <p id="bio">{bio}</p>
         </div>
